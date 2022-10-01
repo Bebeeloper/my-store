@@ -25,7 +25,6 @@ h2 {
   display: flex;
   justify-content: center;
   justify-content: space-around;
-  /* background-color: aqua; */
 }
 
 .employees-container .info-person-container{
