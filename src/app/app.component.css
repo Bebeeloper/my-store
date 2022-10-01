@@ -1,0 +1,49 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 62.5%;
+}
+
+h1 {
+  font-size: 3rem;
+  text-align: center;
+  color: red;
+}
+
+h2 {
+  padding: 2rem;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.employees-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  justify-content: space-around;
+  /* background-color: aqua; */
+}
+
+.employees-container .info-person-container{
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 40%;
+  list-style-type: none;
+  border-radius: 1rem;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.employees-container .info-person-container figure{
+  width: 100%;
+}
+
+.employees-container .info-person-container figure img{
+  width: 100%;
+}
+
