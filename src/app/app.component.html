@@ -1,7 +1,7 @@
 <h1>{{title}}</h1>
 <h2>Employees</h2>
 <section class="employees-container">
-  <ul class="info-person-container" *ngFor="let person of persons"><h3>Employee {{persons.indexOf(person) + 1}}</h3>
+  <ul class="info-person-container" *ngFor="let person of persons; let index = index"><h3>Employee {{index + 1}}</h3>
     <figure class="avatar-container">
       <img [src]="person.avatarPic" alt="avatar profile photo">
     </figure>
@@ -14,3 +14,20 @@
   </ul>
 </section>
 
+<!-- ngIf -->
+  <input type="text" [(ngModel)]="persons[0].firstName">
+  <p *ngIf="persons[0].firstName == 'Kevind'">Bienvenido {{persons[0].firstName}}</p>
+
+  <p *ngIf="persons[0].firstName == 'Pedro'; else elseBlock">Bienvenido {{persons[0].firstName}}</p>
+  <ng-template #elseBlock>
+    <p>No eres Pedro</p>
+  </ng-template>
+<!-- ngIf -->
+
+<!-- ngFor -->
+  <input type="text" [(ngModel)]="newFruit">
+  <input type="button" value="Add fruit" (click)="addFruit()">
+  <ul class="fruits-container">
+    <li *ngFor="let fruit of fruits; index as i">{{i + 1}} {{fruit}} <input type="button" value="X" (click)="deleteFruit(i)"></li>
+  </ul>
+<!-- ngFor -->

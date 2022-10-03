@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 
 export class AppComponent {
   title = 'my-store';
-  persons: any[] = [{
+  persons = [{
     avatarPic: "https://thumbs.dreamstime.com/b/businessman-icon-vector-male-avatar-profile-image-profile-businessman-icon-vector-male-avatar-profile-image-182095609.jpg",
     firstName: "Kevind",
     lastName: "Ospina",
@@ -22,4 +22,18 @@ export class AppComponent {
     age: 26,
     eyeColor: "Brown"
   }];
+
+  newFruit: String = '';
+  fruits: String[] = [];
+
+  addFruit() {
+    if (this.newFruit != '') {
+      this.fruits.push(this.newFruit);
+      this.newFruit = '';
+    }
+  }
+
+  deleteFruit(position: number) {
+    this.fruits.splice(position, 1);
+  }
 }
