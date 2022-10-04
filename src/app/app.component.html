@@ -35,13 +35,17 @@
 <section class="market-shipping">
   <article class="market-container">
     <ul>
-      <li *ngFor="let item of market; index as i">
+      <li class="li-market" *ngFor="let item of market; index as i">
+
         <figure>
           <img [src]="item.productImg" alt="">
         </figure>
         <p>{{item.productName}}</p>
         <p>$ {{item.price}}</p>
-        <input type="button" value="+" (click)="addMiniCart(i)">
+        <input *ngIf="item.added == false; else elseProduct" class="add-product" type="button" value="+" (click)="addMiniCart(i)">
+        <ng-template #elseProduct>
+          <input class="add-product1" type="button" value="+" >
+        </ng-template>
       </li>
     </ul>
   </article>
