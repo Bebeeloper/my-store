@@ -31,3 +31,35 @@
     <li *ngFor="let fruit of fruits; index as i">{{i + 1}} {{fruit}} <input type="button" value="X" (click)="deleteFruit(i)"></li>
   </ul>
 <!-- ngFor -->
+
+<section class="market-shipping">
+  <article class="market-container">
+    <ul>
+      <li *ngFor="let item of market; index as i">
+        <figure>
+          <img [src]="item.productImg" alt="">
+        </figure>
+        <p>{{item.productName}}</p>
+        <p>$ {{item.price}}</p>
+        <input type="button" value="+" (click)="addMiniCart(i)">
+      </li>
+    </ul>
+  </article>
+  <article class="mini-cart-container">
+    <ul>
+      <li *ngFor="let cart of miniCart; index as i">
+        <figure>
+          <img [src]="cart.productImg" alt="">
+        </figure>
+        <p>{{cart.productName}}</p>
+        <p>{{cart.price}}</p>
+        <div class="cart-quantity">
+          <input class="subs-cart" type="button" value="-" (click)="deleteItemsFromCart(i)">
+          <p>{{cart.quantity}}</p>
+          <input class="sum-cart" type="button" value="+" (click)="deleteItemsFromCart(i)">
+        </div>
+        <input type="button" value="X" (click)="deleteItemsFromCart(i)">
+      </li>
+    </ul>
+  </article>
+</section>

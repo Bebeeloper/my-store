@@ -23,6 +23,20 @@ export class AppComponent {
     eyeColor: "Brown"
   }];
 
+  market : any[] = [{
+    productName: 'Meat',
+    quantity: 1,
+    productImg: '../assets/products/carne.png',
+    price: 12000
+  },
+  {
+    productName: 'Chicken',
+    quantity: 1,
+    productImg: '../assets/products/chicken-leg.png',
+    price: 8500
+  }];
+
+  miniCart: any[] = [];
   newFruit: String = '';
   fruits: String[] = [];
 
@@ -35,5 +49,13 @@ export class AppComponent {
 
   deleteFruit(position: number) {
     this.fruits.splice(position, 1);
+  }
+
+  addMiniCart(index: number){
+    this.miniCart.push(this.market[index]);
+  }
+
+  deleteItemsFromCart(index: number) {
+    this.miniCart.splice(index, 1);
   }
 }
