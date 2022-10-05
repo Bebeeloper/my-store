@@ -1,0 +1,75 @@
+<h1>{{title}}</h1>
+<h2>Employees</h2>
+<section class="employees-container">
+  <ul class="info-person-container" *ngFor="let person of persons; let index = index"><h3>Employee {{index + 1}}</h3>
+    <figure class="avatar-container">
+      <img [src]="person.avatarPic" alt="avatar profile photo">
+    </figure>
+    <div class="li-list">
+      <li><strong>Name:</strong> {{person.firstName}}</li>
+      <li><strong>LastName:</strong> {{person.lastName}}</li>
+      <li><strong>Age:</strong> {{person.age}}</li>
+      <li><strong>Eye color:</strong> {{person.eyeColor}}</li>
+    </div>
+  </ul>
+</section>
+
+<!-- ngIf -->
+  <input type="text" [(ngModel)]="persons[0].firstName">
+  <p *ngIf="persons[0].firstName == 'Kevind'">Bienvenido {{persons[0].firstName}}</p>
+
+  <p *ngIf="persons[0].firstName == 'Pedro'; else elseBlock">Bienvenido {{persons[0].firstName}}</p>
+  <ng-template #elseBlock>
+    <p>No eres Pedro</p>
+  </ng-template>
+<!-- ngIf -->
+
+<!-- ngFor -->
+  <input type="text" [(ngModel)]="newFruit">
+  <input type="button" value="Add fruit" (click)="addFruit()">
+  <ul class="fruits-container">
+    <li *ngFor="let fruit of fruits; index as i">{{i + 1}} {{fruit}} <input type="button" value="X" (click)="deleteFruit(i)"></li>
+  </ul>
+<!-- ngFor -->
+
+<section class="market-shipping">
+  <article class="market-container">
+    <ul>
+      <li class="li-market" *ngFor="let item of market; index as i">
+
+        <figure>
+          <img [src]="item.productImg" alt="">
+        </figure>
+        <p>{{item.productName}}</p>
+        <p>$ {{item.price}}</p>
+        <input *ngIf="item.added == false; else elseProduct" class="add-product" type="button" value="+" (click)="addMiniCart(i)">
+        <ng-template #elseProduct>
+          <input class="add-product1" type="button" value="+" >
+        </ng-template>
+      </li>
+    </ul>
+  </article>
+  <article class="mini-cart-container">
+    <ul>
+      <div class="header-cart">
+        <p>Amount: {{amount}}</p>
+      </div>
+      <li *ngFor="let cart of miniCart; index as i">
+        <figure>
+          <img [src]="cart.productImg" alt="">
+        </figure>
+        <p>{{cart.productName}}</p>
+        <p>{{cart.price}}</p>
+        <div class="cart-quantity">
+          <input class="subs-allowed" *ngIf="cart.quantity > 1; else elseSubsProduct" type="button" value="-" (click)="subsProductQuantity(i)">
+          <ng-template #elseSubsProduct>
+            <input class="subs-not-allowed" type="button" value="-">
+          </ng-template>
+          <p>{{cart.quantity}}</p>
+          <input class="subs-allowed" type="button" value="+" (click)="sumProductQuantity(i)">
+        </div>
+        <input class="delete-mini-cart" type="button" value="X" (click)="deleteItemsFromCart(i)">
+      </li>
+    </ul>
+  </article>
+</section>

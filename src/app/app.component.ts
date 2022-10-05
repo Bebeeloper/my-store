@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Product } from './product.model';
 
 @Component({
   selector: 'app-root',
@@ -8,73 +9,47 @@ import { Component } from '@angular/core';
 
 export class AppComponent {
 
-  title = 'my-store';
-  btnAddToggle: boolean = true;
-  // backgroundLiMarket: String = '';
-
-  persons = [{
-    avatarPic: "https://thumbs.dreamstime.com/b/businessman-icon-vector-male-avatar-profile-image-profile-businessman-icon-vector-male-avatar-profile-image-182095609.jpg",
-    firstName: "Kevind",
-    lastName: "Ospina",
-    age: 28,
-    eyeColor: "Green",
-    added: true
-  },
-  {
-    avatarPic: "https://img.freepik.com/premium-vector/female-user-profile-avatar-is-woman-character-screen-saver-with-emotions_505620-617.jpg",
-    firstName: "Mayra",
-    lastName: "Ospina",
-    age: 26,
-    eyeColor: "Brown",
-    added: true
-  }];
-
-  market : any[] = [{
-    productName: 'Meat',
-    quantity: 1,
-    productImg: '../assets/products/carne.png',
-    price: 12000,
-    added: false,
-    productIndex: 1
-  },
-  {
-    productName: 'Chicken',
-    quantity: 1,
-    productImg: '../assets/products/chicken-leg.png',
-    price: 8500,
-    added: false,
-    productIndex: 1
-  }];
-
-  miniCart: any[] = [];
-  newFruit: String = '';
-  fruits: String[] = [];
-
-  addFruit() {
-    if (this.newFruit != '') {
-      this.fruits.push(this.newFruit);
-      this.newFruit = '';
+  products: Product[] = [
+    {
+      name: 'Carne de cerdo',
+      price: 12500,
+      image: '../assets/products/meat.jpg'
+    },
+    {
+      name: 'Pechuga de pollo',
+      price: 8500,
+      image: '../assets/products/chicken.jpg'
+    },
+    {
+      name: 'Panal de juevos',
+      price: 14000,
+      image: '../assets/products/eggs.jpg'
+    },
+    {
+      name: 'Cebolla cabezona',
+      price: 2000,
+      image: '../assets/products/onion.jpg'
+    },
+    {
+      name: 'Tomates',
+      price: 8500,
+      image: '../assets/products/tomato.jpg'
+    },
+    {
+      name: 'Tomates',
+      price: 8500,
+      image: '../assets/products/tomato.jpg'
+    },
+    {
+      name: 'Tomates',
+      price: 8500,
+      image: '../assets/products/tomato.jpg'
+    },
+    {
+      name: 'Tomates',
+      price: 8500,
+      image: '../assets/products/tomato.jpg'
     }
-  }
+  ];
 
-  deleteFruit(position: number) {
-    this.fruits.splice(position, 1);
-  }
-
-  addMiniCart(index: number){
-    this.market[index].added = true;
-    this.market[index].productIndex = index;
-    this.miniCart.push(this.market[index]);
-  }
-
-  deleteItemsFromCart(index: number) {
-    console.log(this.miniCart[index].added);
-    console.log('Market added: ' + this.market[this.miniCart[index].productIndex].added);
-    this.market[this.miniCart[index].productIndex].added = false;
-    this.miniCart.splice(index, 1);
-  }
-
-  // productAdded(){
-  //   this.btnAddToggle = false;
-  // }
 }
