@@ -1,9 +1,13 @@
 <div class="products-container">
-  <article class="info-product" *ngFor="let product of products">
+  <article class="info-product" *ngFor="let product of products; index as i">
     <figure class="img-product-container">
       <img [src]="product.image" alt="">
     </figure>
-    <h2>{{product.name}}</h2>
+    <h2>{{product.title}}</h2>
     <p>$ {{product.price}}</p>
+    <p *ngIf="product.descriptionComplete == false; else elseDescription"> {{product.description.substring(0,100)}} <a (click)="showDescriptionComplete(i)">.....</a></p>
+    <ng-template #elseDescription>
+      <p>{{product.description}} <a (click)="showDescriptionComplete(i)">....</a></p>
+    </ng-template>
   </article>
 </div>
